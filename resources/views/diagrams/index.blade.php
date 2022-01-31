@@ -56,20 +56,22 @@
                                         <div class="bgp bgp-03">
                                             {{ $item3->title }} <br /> {{ $item3->ip }}
                                         </div>
-                                        <div class="ml-5 mb-5">
+                                        <div class="ml-5 mb-5 row d-flex align-self-start">
                                             @foreach($teams as $item4)
                                                 @if ($item4->team_id == $item3->id && $item4->group !== 0 )
-                                                    <div class="bgp bgp-04">
-                                                        {{ $item4->title }} <br /> {{ $item4->ip }}
-                                                    </div>
-                                                    <div class="ml-5 mb-5">
-                                                        @foreach($teams as $item5)
-                                                            @if ($item5->team_id == $item4->id )
-                                                                <a href="https://{{ $item5->ip }}" target="_blank" class="bgp bgp-05 mb-3">
-                                                                    {{ $item5->title }} <br /> {{ $item5->ip }}
-                                                                </a>
-                                                            @endif
-                                                        @endforeach
+                                                    <div class="d-inline-block">
+                                                        <div class="bgp bgp-04">
+                                                            {{ $item4->title }} <br /> {{ $item4->ip }}
+                                                        </div>
+                                                        <div class="ml-5 mb-5">
+                                                            @foreach($teams as $item5)
+                                                                @if ($item5->team_id == $item4->id )
+                                                                    <a href="https://{{ $item5->ip }}" target="_blank" class="bgp bgp-05 mb-3">
+                                                                        {{ $item5->title }} <br /> {{ $item5->ip }}
+                                                                    </a>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 @endif
                                                 @if ($item4->team_id == $item3->id && $item4->group === 0 )
