@@ -5,9 +5,9 @@
         .bgp {
             border-radius: 5px;
             color: #ffffff !important;
-            font-size: 12px;
-            padding: 10px 0px;
-            width: 200px;
+            font-size: 10px;
+            padding: 5px 0px;
+            width: 150px;
             display: block;
             cursor: pointer;
             text-align: center;
