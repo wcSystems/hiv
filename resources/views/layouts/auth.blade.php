@@ -20,7 +20,7 @@
             
             --global-2: <?= ( $palette_colors ) ? $palette_colors->color_primary : '#fff'; ?> !important;       
             --global-4: <?= ( $palette_colors ) ? $palette_colors->color_secondary : '#000'; ?> !important;        
-            --global-6: <?= ( $palette_colors ) ? $palette_colors->color_tertiary : '#00cbff'; ?> !important;
+            --global-6: <?= ( $palette_colors ) ? $palette_colors->color_tertiary : '#5c5c5c'; ?> !important;
         }
         .right-content{
             background-color: var(--global-6) !important
