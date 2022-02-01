@@ -71,7 +71,7 @@
                         <th>Contraseña SSID</th>
                         <th>MAC</th>
                         <th>Descripcion</th>
-                        <th>Acciones</th>
+                        {{-- <th>Acciones</th> --}}
                     </tr>
                 </thead>
             </table>
@@ -480,7 +480,7 @@
         { data: 'ssid_password' },
         { data: 'mac' },
         { data: 'description' },
-        {
+        /* {
             render: function ( data,type, row  ) {
                 data_modal_current[row.id] = row
                 let url_edit = "{{ route('devices.edit', 'id_replace' ) }}".replace('id_replace', row.id);
@@ -490,7 +490,7 @@
                     <a onclick="edit(data_modal_current[${row.id}])" style="color: var(--global-2)" class="btn btn-yellow btn-icon btn-circle"><i class="fas fa-pen"></i></a>
                 `;
             }
-        },
+        }, */
     ])
 
 

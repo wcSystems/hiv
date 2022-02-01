@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 form-inline mb-3">
                 <div class="form-group w-100">
                     <div class="px-0 col-xs-12 col-sm-7 col-md-6 col-lg-8">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="table-responsive">
             <table id="data-table-default" class="table table-bordered table-td-valign-middle" style="width:100% !important">
                 <thead>
@@ -30,7 +30,7 @@
                         <th>Usuario</th>
                         <th>Contraseña</th>
                         <th>Descripcion</th>
-                        <th>Acciones</th>
+                        {{-- <th>Acciones</th> --}}
                     </tr>
                 </thead>
             </table>
@@ -352,7 +352,7 @@
         },
         {
             render: function ( data,type, row  ) {
-                let ip = ( row.ip !== null ) ? `<a href="https://${row.ip}" target="_blank"> ${row.ip} </a>` : 'N/A'
+                let ip = ( row.ip === null  ) ? 'N/A' : ( row.group !== 1 ) ? `<a style="text-decoration:none !important;" href="http://${row.ip}" target="_blank"> ${row.ip} </a>` : row.ip
                 return ip;
             }
         },
@@ -376,7 +376,7 @@
                 return ( row.description !== null ) ? row.description : 'N/A';
             }
         },
-        {
+        /* {
             render: function ( data,type, row  ) {
                 data_modal_current[row.id] = row
                 let url_edit = "{{ route('teams.edit', 'id_replace' ) }}".replace('id_replace', row.id);
@@ -386,7 +386,7 @@
                     <a onclick="edit(data_modal_current[${row.id}])" style="color: var(--global-2)" class="btn btn-yellow btn-icon btn-circle"><i class="fas fa-pen"></i></a>
                 `;
             }
-        },
+        }, */
     ])
 
 

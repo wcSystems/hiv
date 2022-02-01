@@ -58,6 +58,12 @@
         .sidebar{
             background-color: var(--global-7) !important
         }
+        #data-table-default_wrapper > .row:first-child{
+            display: none !important;
+        }
+        .dataTables_paginate,.paging_simple_numbers{
+            display: none !important;
+        }
     </style>
 
 </head>
@@ -120,12 +126,12 @@
                         </a>
                     </li>
 
-                    <li id="users_nav" class="has-sub closed">
+                    {{-- <li id="users_nav" class="has-sub closed">
                         <a href="{{ route('users') }}">
                             <i class="fa fa-users fa-lg text-white"></i>
                             <span class="text-white">USUARIOS</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- <li id="blocks_nav" class="has-sub closed">
                         <a href="{{ route('blocks') }}">
