@@ -18,7 +18,7 @@
             /*   --global-4: #000 !important;        Color textos tabla    */     
             /*   --global-6: #7ef067 !important;     Color primario        */
             
-            --global-2: <?= ( $palette_colors ) ? $palette_colors->color_primary : '#FFFFFF80'; ?> !important;       
+            --global-2: <?= ( $palette_colors ) ? $palette_colors->color_primary : '#FFFFFFCC'; ?> !important;       
             --global-4: <?= ( $palette_colors ) ? $palette_colors->color_secondary : '#000'; ?> !important;        
             --global-6: <?= ( $palette_colors ) ? $palette_colors->color_tertiary : '#5c5c5c'; ?> !important;
         }
