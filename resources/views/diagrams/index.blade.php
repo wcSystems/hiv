@@ -58,7 +58,7 @@
                 <div class="ml-5 mb-5">
                     @foreach($teams as $item2)
                         @if ($item2->team_id == $item1->id )
-                            <a href="@if( $item2->group != 1 ) http://{{ $item2->ip }} @endif" target="_blank" class="bgp bgp-02 shadow-bgp-all">
+                            <a href="http://{{ $item2->ip }}" target="_blank" class="bgp bgp-02 shadow-bgp-all">
                                 {{ $item2->title }} <br /> {{ $item2->ip }}
                             </a>
                             <div class="ml-5 mb-5 ">
