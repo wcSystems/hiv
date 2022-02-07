@@ -230,7 +230,7 @@
                         },
                     }
                 }).on( 'processing.dt', function ( e, settings, processing ) {
-                    if(processing){ }else{ }
+                    if(processing){ console.log() }else{ }
                 });
                 $("#search").blur( () =>{ $('#data-table-default').DataTable().ajax.reload() });
                 $("#search_network").change( () =>{ $('#data-table-default').DataTable().ajax.reload() });

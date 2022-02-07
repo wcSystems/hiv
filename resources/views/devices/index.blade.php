@@ -23,7 +23,7 @@
                 <div class="form-group w-100">
                     <div class="px-0 col-xs-12 col-sm-7 col-md-6 col-lg-8">
                         <select id="search_network" class="form-control w-100">
-                            <option value="0" selected disabled >Nodos</option>
+                            <option value="" selected >Nodos</option>
                             @foreach( $networks as $item )
                                 <option value="{{ $item->id }}" > {{ $item->a }}.{{ $item->b }}.{{ $item->c }}.0 </option>
                             @endforeach
@@ -35,7 +35,7 @@
                 <div class="form-group w-100">
                     <div class="px-0 col-xs-12 col-sm-7 col-md-6 col-lg-8">
                         <select id="search_type" class="form-control w-100">
-                            <option value="0" selected disabled >Tipos</option>
+                            <option value="" selected  >Tipos</option>
                             @foreach( $types as $item )
                                 <option value="{{ $item->id }}" > {{ $item->name }} </option>
                             @endforeach
@@ -47,7 +47,7 @@
                 <div class="form-group w-100">
                     <div class="px-0 col-xs-12 col-sm-7 col-md-6 col-lg-8">
                         <select id="search_block" class="form-control w-100">
-                            <option value="0" selected disabled >Bloques</option>
+                            <option value="" selected >Bloques</option>
                             @foreach( $blocks as $item )
                                 <option value="{{ $item->id }}" > {{ $item->name }} </option>
                             @endforeach
