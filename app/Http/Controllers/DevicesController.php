@@ -152,35 +152,28 @@ class DevicesController extends Controller
 
 
             $query = DB::table('devices')
-
-
-            ->where(function($query) use ($search_network,$search_type,$search_block){
-                $query->where('network_id', '=', $search_network);
-                $query->where('type_id', '=', $search_type);
-                $query->where('block_id', '=', $search_block);
-            })
-
-
             ->orWhere(function($query) use ($search){
-                $query->where('host','LIKE','%'.$search.'%');
-                /* $query->where('name','LIKE','%'.$search.'%');
-                $query->where('username','LIKE','%'.$search.'%');
-                $query->where('password','LIKE','%'.$search.'%');
-                $query->where('ssid','LIKE','%'.$search.'%');
-                $query->where('ssid_password','LIKE','%'.$search.'%');
-                $query->where('mac','LIKE','%'.$search.'%');
-                $query->where('description','LIKE','%'.$search.'%'); */
+                $query->orWhere('host','LIKE','%'.$search.'%');
+                $query->orWhere('name','LIKE','%'.$search.'%');
+                $query->orWhere('username','LIKE','%'.$search.'%');
+                $query->orWhere('password','LIKE','%'.$search.'%');
+                $query->orWhere('ssid','LIKE','%'.$search.'%');
+                $query->orWhere('ssid_password','LIKE','%'.$search.'%');
+                $query->orWhere('mac','LIKE','%'.$search.'%');
+                $query->orWhere('description','LIKE','%'.$search.'%');
             })
-
-
+            ->where(function($query) use ($search_network,$search_type,$search_block){
+                if(!empty($search_network)){
+                    $query->where('network_id', '=', $search_network);
+                }else{};
+                if(!empty($search_type)){
+                    $query->where('type_id', '=', $search_type);
+                }else{};
+                if(!empty($search_block)){
+                    $query->where('block_id', '=', $search_block);
+                }else{};
+            })
             ->get();
-
-
-
-
-
-
-
 
         /* FIELDS DEFAULTS DATATABLES */
         $draw = $request->get('draw');
