@@ -25,6 +25,7 @@ Route::get('/networks/service', 'NetworksController@service')->name('networks.se
 Route::get('/devices/service', 'DevicesController@service')->name('devices.service');
 Route::get('/palette_colors/service', 'PaletteColorsController@service')->name('palette_colors.service');
 Route::get('/teams/service', 'TeamsController@service')->name('teams.service');
+Route::get('/invcasino/service', 'InvcasinoController@service')->name('invcasino.service');
 
 
 

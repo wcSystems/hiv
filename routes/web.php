@@ -53,6 +53,14 @@ Route::resource('networks', 'NetworksController')->names([
     'destroy' => 'networks.destroy'
 ]);
 
+// VIEW AND CRUD - INV CASINO
+Route::resource('invcasino', 'InvcasinoController')->names([
+    'index' => 'invcasino',
+    'create' => 'invcasino.create',
+    'update' => 'invcasino.update',
+    'destroy' => 'invcasino.destroy'
+]);
+
 // VIEW AND CRUD - DEVICES
 Route::resource('devices', 'DevicesController')->names([
     'index' => 'devices',
