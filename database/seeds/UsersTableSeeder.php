@@ -16,10 +16,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Willinthon Carriedo",
             'email' => 'willinthon',
+            'level_id' => 1,
+            'department_id' => 1,
             'password' => bcrypt('12345678'),
-            'celular' => '4121482348',
-            'cedula' => '25047058',
-            'nacimiento' => '1996-09-13',
         ]);
     }
 }

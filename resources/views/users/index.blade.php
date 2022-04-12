@@ -26,10 +26,9 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre y Apellido</th>
-                        <th>Cédula</th>
                         <th>Usuario</th>
-                        <th>Celular</th>
-                        <th>Fecha de Nacimiento</th>
+                        <th>Departamento</th>
+                        <th>Nivel</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -75,12 +74,21 @@
             html:`
                 <form id="form_user_create" >
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-sm-12">
                             <div class="form-group row m-b-0">
                                 <label class=" text-lg-right col-form-label"> Nombre y Apellido <span class="text-danger">*</span> </label>
                                 <div class="col-lg-12">
                                     <input type="text" id="name" name="name" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Nombre y Apellido" >
                                     <div id="text-error-name"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group row m-b-0">
+                                <label class=" text-lg-right col-form-label"> Usuario</label>
+                                <div class="col-lg-12">
+                                    <input type="email"  id="email" name="email" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Usuario" >
+                                    <div id="text-error-email"></div>
                                 </div>
                             </div>
                         </div>
@@ -95,37 +103,29 @@
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Numero de Telefono <span class="text-danger">*</span> </label>
+                                <label class=" text-lg-right col-form-label"> Departamentos <span class="text-danger">*</span> </label>
                                 <div class="col-lg-12">
-                                    <input type="text"  id="celular" name="celular" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su numero de Telefono" >
-                                    <div id="text-error-celular"></div>
+                                    <select id="department_id" class="form-control w-100">
+                                        <option value="" selected  >Seleccione</option>
+                                        @foreach( $departments as $item )
+                                            <option value="{{ $item->id }}" > {{ $item->name }} </option>
+                                        @endforeach
+                                    </select>
+                                    <div id="text-error-department"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Numero de Cédula </label>
+                                <label class=" text-lg-right col-form-label"> Niveles </label>
                                 <div class="col-lg-12">
-                                    <input type="text"  id="cedula" name="cedula" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su numero de Cédula" >
-                                    <div id="text-error-cedula"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Fecha de Nacimiento <span class="text-danger">*</span> </label>
-                                <div class="col-lg-12">
-                                    <input type="text"  id="nacimiento" name="nacimiento" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Fecha de Nacimiento" >
-                                    <div id="text-error-nacimiento"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Usuario</label>
-                                <div class="col-lg-12">
-                                    <input type="email"  id="email" name="email" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Usuario" >
-                                    <div id="text-error-email"></div>
+                                    <select id="level_id" class="form-control w-100">
+                                        <option value="" selected  >Seleccione</option>
+                                        @foreach( $levels as $item )
+                                            <option value="{{ $item->id }}" > {{ $item->name }} </option>
+                                        @endforeach
+                                    </select>
+                                    <div id="text-error-level"></div>
                                 </div>
                             </div>
                         </div>
@@ -138,13 +138,14 @@
         $('#nacimiento').datepicker({ format: "yyyy-mm-dd", language: "en" });
     }
     function edit(params) {
+        console.log(params)
         Swal.fire({
             title: 'Editar Usuario',
             showConfirmButton: false,
             html:`
                 <form id="form_user_edit" >
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-sm-12">
                             <div class="form-group row m-b-0">
                                 <label class=" text-lg-right col-form-label"> Nombre y Apellido <span class="text-danger">*</span> </label>
                                 <div class="col-lg-12">
@@ -155,37 +156,47 @@
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Numero de Telefono <span class="text-danger">*</span> </label>
-                                <div class="col-lg-12">
-                                    <input type="text"  id="celular" name="celular" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su numero de Telefono" value="${params.celular}">
-                                    <div id="text-error-celular"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Numero de Cédula </label>
-                                <div class="col-lg-12">
-                                    <input type="text"  id="cedula" name="cedula" disabled class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su numero de Cédula" value="${params.cedula}">
-                                    <div id="text-error-cedula"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group row m-b-0">
-                                <label class=" text-lg-right col-form-label"> Fecha de Nacimiento <span class="text-danger">*</span> </label>
-                                <div class="col-lg-12">
-                                    <input type="text"  id="nacimiento" name="nacimiento" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Fecha de Nacimiento" value="${params.nacimiento}">
-                                    <div id="text-error-nacimiento"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group row m-b-0">
                                 <label class=" text-lg-right col-form-label"> Usuario</label>
                                 <div class="col-lg-12">
                                     <input type="text"  id="email" name="email" disabled class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Usuario" value="${params.email}">
                                     <div id="text-error-email"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group row m-b-0">
+                                <label class=" text-lg-right col-form-label"> Contraseña <span class="text-danger">*</span> </label>
+                                <div class="col-lg-12">
+                                    <input type="text"  id="password" name="password" class="form-control parsley-normal upper" style="color: var(--global-2) !important" placeholder="Ingrese su Contraseña" >
+                                    <div id="text-error-password"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group row m-b-0">
+                                <label class=" text-lg-right col-form-label"> Departamentos </label>
+                                <div class="col-lg-12">
+                                    <select id="departament_id" class="form-control w-100">
+                                        <option value="" selected  >Seleccione</option>
+                                        @foreach( $departments as $item )
+                                            <option value="{{ $item->id }}" > {{ $item->name }} </option>
+                                        @endforeach
+                                    </select>
+                                    <div id="text-error-department"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group row m-b-0">
+                                <label class=" text-lg-right col-form-label"> Niveles <span class="text-danger">*</span> </label>
+                                <div class="col-lg-12">
+                                <select id="level_id" class="form-control w-100">
+                                        <option value="" selected  >Seleccione</option>
+                                        @foreach( $levels as $item )
+                                            <option value="{{ $item->id }}" > {{ $item->name }} </option>
+                                        @endforeach
+                                    </select>
+                                    <div id="text-error-level"></div>
                                 </div>
                             </div>
                         </div>
@@ -238,14 +249,11 @@
 
     }
     function create_Submit() {
-        let nac_user_act = $('#nacimiento').val()
         let name_user_act = $('#name').val()
-        let celular_user_act = $('#celular').val()
-        let cedula_user_act = $('#cedula').val()
+        let department_id_act = $('#department_id').val()
+        let level_id_act = $('#level_id').val()
         let password_user_act = $('#password').val()
         let email_user_act = $('#email').val()
-        let dateCurrent = new Date();
-        let edad_new = dateCurrent.getFullYear() - nac_user_act.split('-')[0]
         let url = "{{ route('users.store') }}";
         $.ajax({
             url: url,
@@ -253,10 +261,8 @@
             data: {
                 "_token": $("meta[name='csrf-token']").attr("content"),
                 "name": name_user_act,
-                "nacimiento": nac_user_act,
-                "edad": edad_new,
-                "celular": celular_user_act,
-                "cedula": cedula_user_act,
+                "department_id": department_id_act,
+                "level_id": level_id_act,
                 "password": password_user_act,
                 "email": email_user_act,
             },
@@ -292,14 +298,15 @@
     dataTable("{{route('users.service')}}",[
         { data: 'id' },
         { data: 'name' },
-        { data: 'cedula' },
         { data: 'email' },
-        { data: 'celular' },
         {
             render: function ( data,type, row  ) {
-                let dateCurrent = new Date();
-                let año = row.nacimiento.split('-');
-                return  `${row.nacimiento} ( ${ dateCurrent.getFullYear() - año[0] } Años )`;
+                return row.nameDepartment;
+            }
+        },
+        {
+            render: function ( data,type, row  ) {
+                return row.nameLevel;
             }
         },
         {

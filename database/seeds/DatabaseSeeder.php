@@ -1,10 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
-use App\Type;
-use App\Block;
-use App\Network;
 use Illuminate\Support\Facades\URL;
 
 class DatabaseSeeder extends Seeder
@@ -16,9 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(LocationsTableSeeder::class);
+        $this->call(DepartmentsTableSeeder::class);
+        $this->call(LevelsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(TypesTableSeeder::class);
-        $this->call(BlocksTableSeeder::class);
-        $this->call(NetworksTableSeeder::class);
+        $this->call(MachinesTableSeeder::class);
     }
 }

@@ -18,10 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name',100);
-            $table->string('celular',10)->nullable();
-            $table->string('cedula',11)->unique();
-            $table->date('nacimiento');
             $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedBigInteger('level_id');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');  
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade'); 
             $table->rememberToken();
             $table->timestamps();
         });

@@ -103,68 +103,19 @@
 
             <div data-scrollbar="true" data-height="100%" class="banner-icons">
                 <ul class="nav " data-click="pr-0">
-                    <li class="nav-header" style="color: #fff !important">INVENTARIO</li>
-
-                    <li id="invcasino_nav" class="has-sub closed">
-                        <a href="{{ route('invcasino') }}">
-                            <i class="fas fa-desktop fa-lg text-white"></i>
-                            <span class="text-white">CASINO</span>
-                        </a>
-                    </li>
-                    <li class="nav-header" style="color: #fff !important">RED</li>
-                    <li id="devices_nav" class="has-sub closed">
-                        <a href="{{ route('devices') }}">
-                            <i class="fas fa-desktop fa-lg text-white"></i>
-                            <span class="text-white">EQUIPOS RED VIEJA</span>
-                        </a>
-                    </li>
-                    <li id="teams_nav" class="has-sub closed">
-                        <a href="{{ route('teams') }}">
-                            <i class="fas fa-desktop fa-lg text-white"></i>
-                            <span class="text-white">EQUIPOS</span>
-                        </a>
-                    </li>
-
-                    <li id="diagrams_nav" class="has-sub closed">
-                        <a href="{{ route('diagrams') }}">
-                            <i class="fas fa-desktop fa-lg text-white"></i>
-                            <span class="text-white">DIAGRAMA</span>
-                        </a>
-                    </li>
-
-                    {{-- <li id="users_nav" class="has-sub closed">
+                    <li class="nav-header" style="color: #fff !important">ADMINISTRADOR</li>
+                    <li id="users_nav" class="has-sub closed">
                         <a href="{{ route('users') }}">
                             <i class="fa fa-users fa-lg text-white"></i>
                             <span class="text-white">USUARIOS</span>
                         </a>
-                    </li> --}}
-
-                    {{-- <li id="blocks_nav" class="has-sub closed">
-                        <a href="{{ route('blocks') }}">
-                            <i class="fas fa-cubes fa-lg text-white"></i>
-                            <span class="text-white">BLOQUES</span>
-                        </a>
                     </li>
-
-                    <li id="types_nav" class="has-sub closed">
-                        <a href="{{ route('types') }}">
-                            <i class="fas fa-server fa-lg text-white"></i>
-                            <span class="text-white">TIPOS DE DISPOSITIVOS</span>
-                        </a>
-                    </li>
-                    <li id="networks_nav" class="has-sub closed">
-                        <a href="{{ route('networks') }}">
-                            <i class="fas fa-network-wired fa-lg text-white"></i>
-                            <span class="text-white">NODOS</span>
-                        </a>
-                    </li>
-
                     <li id="palette_colors_nav" class="has-sub closed">
                         <a href="{{ route('palette_colors') }}">
                             <i class="fas fa-palette fa-lg text-white"></i>
                             <span class="text-white">COLORES</span>
                         </a>
-                    </li> --}}
+                    </li>
 
                 </ul>
             </div>

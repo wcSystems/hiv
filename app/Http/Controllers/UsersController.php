@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Department;
+use App\Models\Level;
 
 class UsersController extends Controller
 {
@@ -12,7 +14,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $departments = Department::All();
+        $levels = Level::All();
+        return view('users.index')->with('departments',$departments)->with('levels',$levels);
     }
 
     /**
@@ -41,23 +45,8 @@ class UsersController extends Controller
         if(strlen($request->get('name')) > 100){
             $error['name'] = 'El Nombre no puede exceder los 100 Caracteres';
         }
-        if($request->get('celular') == ''){
-            $error['celular'] = 'Ingrese un Numero de Telefono';
-        }
-        if($request->get('cedula') == ''){
-            $error['cedula'] = 'Ingrese un Numero de Cedula';
-        }
         if($request->get('email') == ''){
             $error['email'] = 'Ingrese un Usuario';
-        }
-        if(strlen($request->get('celular')) > 10){
-            $error['celular'] = 'El Numero Celular no puede exceder los 10 Caracteres';
-        }
-        if(strlen($request->get('cedula')) > 11){
-            $error['cedula'] = 'El Numero de Cedula no puede exceder los 11 Caracteres';
-        }
-        if(  User::where('cedula',$request->get('cedula'))->select('cedula')->first()    ){
-            $error['cedula'] = 'El Numero de Cedula ya se encuentra registrado';
         }
         if(strlen($request->get('password')) < 8){
             $error['password'] = 'La contraseña es muy corta';
@@ -70,11 +59,10 @@ class UsersController extends Controller
         }else{
             $values = [
                 'name' => $request->get('name'),
-                'password' => bcrypt($request->get('password')),
-                'cedula' => $request->get('cedula'),
                 'email' => $request->get('email'),
-                'nacimiento' => $request->get('nacimiento'),
-                'celular' => $request->get('celular'),
+                'password' => bcrypt($request->get('password')),
+                'level_id' => $request->get('level_id'),
+                'department_id' => $request->get('department_id'),
             ];
             $current_item = new User($values);
             $current_item->save();
@@ -163,10 +151,12 @@ class UsersController extends Controller
         $search = $request->get('search');
 
         /* QUERY FILTER */
-        $query = User::where('name','LIKE','%'.$search.'%')
-            ->orWhere('cedula','LIKE','%'.$search.'%')
-            ->orWhere('email','LIKE','%'.$search.'%')
-            ->orWhere('celular','LIKE','%'.$search.'%')->get();
+        $query = User::select('users.*','departments.name AS nameDepartment','levels.name AS nameLevel')
+            ->join('departments', 'users.department_id', '=', 'departments.id')
+            ->join('levels', 'users.level_id', '=', 'levels.id')
+            ->where('users.name','LIKE','%'.$search.'%')
+            ->orWhere('users.email','LIKE','%'.$search.'%')
+            ->get();
 
         /* FIELDS DEFAULTS DATATABLES */
         $draw = $request->get('draw');
